@@ -2,6 +2,7 @@ package com.example.batb;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.net.Uri;
 import android.os.Bundle;
 
 import android.provider.MediaStore;
@@ -11,6 +12,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
+    private static final int PICK_FROM_CAMERA=0;
+    private static final int PICK_FROM_ALBUM=1;
 
     private Button cameraButton, albumButton, quitButton, helpButton;
     @Override
@@ -18,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         openCamera();
-        openablum();
+        openAblum();
         quit();
     }
 
@@ -34,12 +37,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void openablum(){
+    private void openAblum(){
         albumButton = (Button) findViewById(R.id.album);
         albumButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
+                startActivity(intent);
             }
         });
     }
