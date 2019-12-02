@@ -12,9 +12,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    private static final int PICK_FROM_CAMERA=0;
-    private static final int PICK_FROM_ALBUM=1;
-
     private Button cameraButton, albumButton, quitButton, helpButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
         openCamera();
         openAblum();
         quit();
+        help();
     }
 
     private void openCamera() {
@@ -57,6 +55,17 @@ public class MainActivity extends AppCompatActivity {
                 finishActivity(0);
                 System.runFinalization();
                 System.exit(0);
+            }
+        });
+    }
+
+    private void help(){
+        helpButton = findViewById(R.id.info);
+        helpButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), HelpActivity.class);
+                startActivity(intent);
             }
         });
     }
