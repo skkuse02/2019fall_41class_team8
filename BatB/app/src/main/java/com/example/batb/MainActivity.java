@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         openCamera();
         openablum();
-        gobacktodesk();
+        quit();
     }
 
     private void openCamera() {
@@ -44,12 +44,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void gobacktodesk(){
+    private void quit(){
         quitButton = (Button) findViewById(R.id.quit);
         quitButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                finishActivity(0);
+                System.runFinalization();
+                System.exit(0);
             }
         });
     }
