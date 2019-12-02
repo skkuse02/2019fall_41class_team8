@@ -1,70 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.AppCompatButton
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        app:srcCompat="@drawable/logo" />
+
+    <Button
         android:id="@+id/camera"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:layout_marginStart="105dp"
-        android:layout_marginTop="380dp"
-        android:layout_marginEnd="106dp"
         android:background="#c0504d"
         android:fontFamily="@font/tubiti"
         android:text="@string/camera"
         android:textColor="#ffffff"
         android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/logo"
+        android:layout_marginTop="20dp"/>
 
-    <androidx.appcompat.widget.AppCompatButton
+    <Button
         android:id="@+id/album"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:layout_marginStart="105dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="106dp"
+        android:layout_below="@id/camera"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:background="#efd3d3"
         android:fontFamily="@font/tubiti"
         android:text="@string/album"
         android:textColor="#c0504d"
-        android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.38"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/camera" />
+        android:textSize="25sp" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <Button
         android:id="@+id/quit"
         android:layout_width="200dp"
         android:layout_height="50dp"
-        android:layout_marginStart="105dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="106dp"
         android:background="#ffffff"
         android:fontFamily="@font/tubiti"
         android:text="@string/quit"
         android:textColor="#c0504d"
         android:textSize="25sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/album" />
+        android:layout_below="@+id/album"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"/>
 
-    <androidx.appcompat.widget.AppCompatButton
+    <Button
         android:id="@+id/info"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="31dp"
         android:background="@drawable/button_frame_shape"
         android:text="?"
         android:textSize="30sp"
         android:topRightRadius="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/tubiti"
+        />
+
+
+</RelativeLayout>
