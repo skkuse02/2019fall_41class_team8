@@ -20,10 +20,6 @@ public class ImageList extends AppCompatActivity {
         viewPager.setAdapter(new MainPagerAdapter(getSupportFragmentManager()));
         viewPager.setOffscreenPageLimit(2);
 
-        final NavigationTabStrip navigationTabStrip = (NavigationTabStrip) findViewById(R.id.nts);
-        navigationTabStrip.setTitles("HOW WE WORK", "WE WORK WITH");
-        navigationTabStrip.setViewPager(viewPager);
-
 
     }
 

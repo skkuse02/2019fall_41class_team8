@@ -13,24 +13,38 @@ import com.gigamole.infinitecycleviewpager.VerticalInfiniteCycleViewPager;
 
 import static com.example.batb.utils.Utils.setupItem;
 
+//get image
 public class HorizontalPagerAdapter extends PagerAdapter {
     private final Utils.LibraryObject[] LIBRARIES = new Utils.LibraryObject[]{
             new Utils.LibraryObject(
-                    R.drawable.ic_strategy,
-                    "Strategy"
+                    R.drawable.iu_one,
+                    "IU1"
             ),
             new Utils.LibraryObject(
-                    R.drawable.ic_design,
-                    "Design"
+                    R.drawable.iu_two,
+                    "IU2"
             ),
             new Utils.LibraryObject(
-                    R.drawable.ic_development,
-                    "Development"
+                    R.drawable.v_one,
+                    "V1"
             ),
             new Utils.LibraryObject(
-                    R.drawable.ic_qa,
-                    "Quality Assurance"
+                    R.drawable.v_two,
+                    "V2"
+            ),
+            new Utils.LibraryObject(
+                    R.drawable.queen_one,
+                    "퀸연아1"
+            ),
+            new Utils.LibraryObject(
+                    R.drawable.queen_two,
+                    "퀸연아2"
+            ),
+            new Utils.LibraryObject(
+                    R.drawable.queen_god,
+                    "연아갓"
             )
+
     };
 
     private Context mContext;
