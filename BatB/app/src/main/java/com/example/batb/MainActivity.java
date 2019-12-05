@@ -147,7 +147,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode != Activity.RESULT_OK){
+        if(resultCode != RESULT_OK){
             Toast.makeText(this,"취소되었습니다.",Toast.LENGTH_SHORT).show();
             return;
         }
