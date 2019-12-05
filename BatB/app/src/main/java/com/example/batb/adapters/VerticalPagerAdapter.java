@@ -14,6 +14,7 @@ import static com.example.batb.utils.Utils.setupItem;
 
 class VerticalPagerAdapter extends PagerAdapter {
     private final Utils.LibraryObject[] TWO_WAY_LIBRARIES = new Utils.LibraryObject[]{
+            /*
             new Utils.LibraryObject(
                     R.drawable.ic_fintech,
                     "Fintech"
@@ -38,6 +39,8 @@ class VerticalPagerAdapter extends PagerAdapter {
                     R.drawable.ic_internet,
                     "Internet of things"
             )
+
+             */
     };
 
     private LayoutInflater mLayoutInflater;

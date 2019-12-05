@@ -1,5 +1,6 @@
 package com.example.batb;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,19 +13,22 @@ import com.example.batb.adapters.HorizontalPagerAdapter;
 import com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager;
 
 public class HorizontalPagerFragment extends Fragment {
+    public static int celebid;
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_horizontal, container, false);
     }
+    public static int getID(int s){
+        return celebid = s;
+    }
 
     @Override
     public void onViewCreated(final View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
         final HorizontalInfiniteCycleViewPager horizontalInfiniteCycleViewPager =
                 (HorizontalInfiniteCycleViewPager) view.findViewById(R.id.hicvp);
-        horizontalInfiniteCycleViewPager.setAdapter(new HorizontalPagerAdapter(getContext(), false));
+        horizontalInfiniteCycleViewPager.setAdapter(new HorizontalPagerAdapter(getContext(), celebid));
 
 //        horizontalInfiniteCycleViewPager.setScrollDuration(400);
 //        horizontalInfiniteCycleViewPager.setPageDuration(1000);

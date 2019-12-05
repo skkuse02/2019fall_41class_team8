@@ -8,7 +8,8 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.batb.adapters.MainPagerAdapter;
 import com.gigamole.navigationtabstrip.NavigationTabStrip;
 
-public class ImageList extends AppCompatActivity {
+public class ImageList extends AppCompatActivity{
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,9 +19,16 @@ public class ImageList extends AppCompatActivity {
         //list
         final ViewPager viewPager = (ViewPager) findViewById(R.id.vp_main);
         viewPager.setAdapter(new MainPagerAdapter(getSupportFragmentManager()));
-        viewPager.setOffscreenPageLimit(2);
+        viewPager.setOffscreenPageLimit(4);
+        //tab
+        final NavigationTabStrip navigationTabStrip = (NavigationTabStrip) findViewById(R.id.nts);
+        navigationTabStrip.setTitles("IU", "V", "Queen", "Jeong");
+        navigationTabStrip.setViewPager(viewPager);
 
+    }
 
+    public interface FragmentListener {
+        void getCelebId(int a);
     }
 
 }
