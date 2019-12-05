@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     private int PHOTO_FROM_CAMERA=0, PHOTO_FROM_ALBUM=1;
     private Button cameraButton, albumButton, quitButton, helpButton;
     ImageView imageView;
+    Button button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +47,13 @@ public class MainActivity extends AppCompatActivity {
         help();
 
         imageView = (ImageView)findViewById(R.id.logo);
+        button = findViewById(R.id.button2);
+        button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(view.getContext(), ResultActivity.class));
+            }
+        });
     }
 
     private void tedPermission(){

@@ -33,13 +33,16 @@
             android:id="@+id/yesButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Yes" />
+            android:text="Yes"
+            android:background="#efd3d3"
+            android:layout_marginRight="20dp"/>
 
         <Button
             android:id="@+id/Nobutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No" />
+            android:text="No"
+            android:background="#efd3d3"/>
 
     </LinearLayout>
 
