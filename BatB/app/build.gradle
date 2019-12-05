@@ -28,4 +28,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 
     implementation "gun0912.ted:tedpermission:2.1.0"
+    compile 'com.android.support:support-v4:26.1.0'
 }
