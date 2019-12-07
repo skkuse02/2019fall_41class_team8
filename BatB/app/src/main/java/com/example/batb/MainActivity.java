@@ -91,13 +91,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        helpButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), HelpActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     private void tedPermission(){
