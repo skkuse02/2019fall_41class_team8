@@ -4,30 +4,29 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
+import com.example.batb.HorizontalPagerFragment;
 import com.example.batb.ImageList;
-import com.example.batb.celebritylist.IuList;
-import com.example.batb.celebritylist.JeongList;
-import com.example.batb.celebritylist.QueenList;
-import com.example.batb.celebritylist.VList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainPagerAdapter extends FragmentStatePagerAdapter {
 
 
     private final static int COUNT = 4;
 
-
-    public Fragment ChoiceCeleb(String id){
+    //Map<String,Integer> ChoiceCeleb = new HashMap<String, Integer>();
+    public Integer ChoiceCeleb(String id){
         switch(id){
-            case "IU":
-                return new IuList();
-            case "V":
-                return new VList();
-            case "Queen":
-                return new QueenList();
-            case "Jeong":
-                return new JeongList();
-            default:
-                return new QueenList();
+            case "chaeyong":    return 0;
+            case "dahyeon":     return 1;
+            case "jeongyeon":   return 2;
+            case "jihyo":       return 3;
+            case "mina":        return 4;
+            case "momo":        return 5;
+            case "nayeon":      return 6;
+            case "sana":        return 7;
+            case "tzuyu":
+            default:            return 8;
         }
     }
 
@@ -39,13 +38,19 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(final int position) {
         if(position == 0){
-            return ChoiceCeleb( ImageList.celebName[0]);
+            //HorizontalPagerFragment.getID(ChoiceCeleb(ImageList.celebName[0]));
+            HorizontalPagerFragment.getID(0);
+            return new HorizontalPagerFragment();
         }else if( position == 1){
-            return ChoiceCeleb( ImageList.celebName[1]);
+            //HorizontalPagerFragment.getID(ChoiceCeleb(ImageList.celebName[1]));
+            HorizontalPagerFragment.getID(1);
+            return new HorizontalPagerFragment();
         }else if( position == 2){
-            return ChoiceCeleb( ImageList.celebName[2]);
+            HorizontalPagerFragment.getID(2);
+            return new HorizontalPagerFragment();
         }else{
-            return ChoiceCeleb( ImageList.celebName[3]);
+            HorizontalPagerFragment.getID(3);
+            return new HorizontalPagerFragment();
         }
     }
 

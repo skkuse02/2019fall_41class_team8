@@ -1,6 +1,7 @@
 package com.example.batb;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LiveData;
@@ -10,16 +11,19 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.batb.adapters.MainPagerAdapter;
 import com.gigamole.navigationtabstrip.NavigationTabStrip;
 
+import org.w3c.dom.Text;
+
 public class ImageList extends AppCompatActivity{
 
     public static String[] celebName = new String[4];
-
+    private TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_img);
-        celebName[0] = "IU"; celebName[1] = "V"; celebName[2] = "Queen"; celebName[3] = "Jeong";
-
+        textView = (TextView)findViewById(R.id.text_similarity);
+        celebName[0] = "tzuyu"; celebName[1] = "mina"; celebName[2] = "sana"; celebName[3] = "momo";
+        textView.setText("99%");
         //list
         final ViewPager viewPager = (ViewPager) findViewById(R.id.vp_main);
         viewPager.setAdapter(new MainPagerAdapter(getSupportFragmentManager()));
