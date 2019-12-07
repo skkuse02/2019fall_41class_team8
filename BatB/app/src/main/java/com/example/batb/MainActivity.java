@@ -1,20 +1,22 @@
 package com.example.batb;
 
+
+import android.content.Intent;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
-
 import android.provider.MediaStore;
 import android.view.View;
-import android.content.Intent;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 public class MainActivity extends AppCompatActivity {
-    private Button cameraButton, albumButton, quitButton, helpButton;
+    private Button cameraButton, albumButton, quitButton, helpButton, listtmpButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +25,20 @@ public class MainActivity extends AppCompatActivity {
         openAblum();
         quit();
         help();
+        listtmp();
+    }
+
+    private void listtmp() {
+        listtmpButton = (Button) findViewById(R.id.listtmp);
+        listtmpButton.setOnClickListener(new OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), listSplashActivity.class);
+                //Intent intent = new Intent(v.getContext(), ImageList.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void openCamera() {
