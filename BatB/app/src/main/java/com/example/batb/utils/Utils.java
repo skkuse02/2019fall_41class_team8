@@ -12,8 +12,6 @@ import com.example.batb.R;
 public class Utils {
 
     public static void setupItem(final View view, final LibraryObject libraryObject) {
-        final TextView txt = (TextView) view.findViewById(R.id.txt_item);
-        txt.setText(libraryObject.getTitle());
 
         final ImageView img = (ImageView) view.findViewById(R.id.img_item);
         img.setImageResource(libraryObject.getRes());
