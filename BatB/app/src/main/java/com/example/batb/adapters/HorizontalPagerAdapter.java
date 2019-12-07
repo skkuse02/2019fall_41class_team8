@@ -4,12 +4,14 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.example.batb.ImageList;
@@ -24,6 +26,7 @@ import static com.example.batb.utils.Utils.setupItem;
 
 //get image
 public class HorizontalPagerAdapter extends PagerAdapter {
+    public static int pos = 0;
     String tmpSign;
     private Context mContext;
     private LayoutInflater mLayoutInflater;
@@ -57,6 +60,10 @@ public class HorizontalPagerAdapter extends PagerAdapter {
 
     }
 
+    public int getCelebId() {
+        return celebId;
+    }
+
     @Override
     public int getCount() {
         //getLoopImg();
@@ -70,12 +77,13 @@ public class HorizontalPagerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(final ViewGroup container, final int position) {
-        //getLoopImg();
+        pos = position;
         final View view;
         view = mLayoutInflater.inflate(R.layout.item, container, false);
         setupItem(view, LIBRARIES.get(position));
 
         container.addView(view);
+
         return view;
     }
 

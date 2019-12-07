@@ -17,26 +17,27 @@ import com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager;
 import java.util.ArrayList;
 
 public class HorizontalPagerFragment extends Fragment {
-    public static ArrayList<Integer> celebid = new ArrayList<Integer>();
-    TextView textView;
+    private int celebid = 0;
+    public HorizontalInfiniteCycleViewPager horizontalInfiniteCycleViewPager;
+
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_horizontal, container, false);
     }
-    public static void getID(int s){
-        celebid.add(s);
+    public void setId(int s){
+        celebid = s;
+    }
+    public int getCelebId() {
+        return celebid;
     }
 
     @Override
     public void onViewCreated(final View view, @Nullable final Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        final HorizontalInfiniteCycleViewPager horizontalInfiniteCycleViewPager =
-                (HorizontalInfiniteCycleViewPager) view.findViewById(R.id.hicvp);
+        horizontalInfiniteCycleViewPager = (HorizontalInfiniteCycleViewPager) view.findViewById(R.id.hicvp);
 
-        int cid = celebid.get(0);
-        celebid.remove(0);
-        horizontalInfiniteCycleViewPager.setAdapter(new HorizontalPagerAdapter(getContext(), cid));
+        horizontalInfiniteCycleViewPager.setAdapter(new HorizontalPagerAdapter(getContext(), celebid));
 
     }
 }
