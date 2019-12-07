@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".PhotoCheckActivity"></activity>
+        <activity android:name=".ResultActivity"></activity>
+        <activity android:name=".PhotoCheckActivity" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -27,7 +28,7 @@
 
         <activity
             android:name=".listSplashActivity"
-            android:theme="@android:style/Theme.NoTitleBar.Fullscreen"></activity>
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
         <activity android:name=".HelpActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
