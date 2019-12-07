@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentUris;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -31,6 +32,8 @@ import okhttp3.Response;
 
 public class RequestActivity extends AppCompatActivity {
     private String selectedImagePath;
+    private String result;
+    private boolean success=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,12 +106,19 @@ public class RequestActivity extends AppCompatActivity {
                     public void run() {
                         TextView responseText = findViewById(R.id.responseText);
                         try {
-                            responseText.setText(response.body().string());
+                            result = response.body().string();
+                            responseText.setText(result);
+                            success=true;
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                     }
                 });
+
+                while(!success);
+                Intent intent = new Intent(getApplicationContext(), ImageList.class);
+                intent.putExtra("result",result);
+                startActivity(intent);
             }
         });
     }
