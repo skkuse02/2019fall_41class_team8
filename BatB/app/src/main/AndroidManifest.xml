@@ -22,7 +22,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.example.batb"
+            android:authorities="com.example.batb.provider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data
