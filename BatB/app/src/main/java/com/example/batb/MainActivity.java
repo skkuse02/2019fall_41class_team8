@@ -126,8 +126,11 @@ public class MainActivity extends AppCompatActivity {
     private void showDialog(){
         AlertDialog.Builder builder=new AlertDialog.Builder(this);
         builder.setTitle("HELP");
-        builder.setMessage("Give us your picture!");
-        builder.setPositiveButton("I know",
+        builder.setMessage("1. CAMERA 또는 ALBUM 버튼을 클릭하여 사용자의 사진을 선택합니다.\n\n" +
+                            "2. 선택한 사진을 바탕으로 닮은 꼴의 연예인을 4명 보여줍니다.\n\n" +
+                            "3. 연예인 목록에서 마음에 드는 화장을 선택합니다.\n\n" +
+                            "4. 해당 화장을 1번에서 선택한 사진에 적용시켜 줍니다. \n\n");
+        builder.setPositiveButton("확인",
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
