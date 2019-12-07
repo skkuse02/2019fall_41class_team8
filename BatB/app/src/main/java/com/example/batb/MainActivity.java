@@ -61,8 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), listSplashActivity.class);
-                //Intent intent = new Intent(v.getContext(), ImageList.class);
+                Intent intent = new Intent(v.getContext(), ImageList.class);
                 startActivity(intent);
             }
         });
