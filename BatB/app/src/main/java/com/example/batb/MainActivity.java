@@ -24,6 +24,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.batb.utils.ImageResizeUtils;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
@@ -36,6 +37,7 @@ import java.util.*;
 import androidx.core.content.FileProvider;
 
 public class MainActivity extends AppCompatActivity {
+    private boolean isCamera=false;
     private File tempFile;
     private int PHOTO_FROM_CAMERA=0, PHOTO_FROM_ALBUM=1;
     private Button cameraButton, albumButton, quitButton, helpButton, listtmpButton;
@@ -74,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 //Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 //startActivityForResult(takePictureIntent, PHOTO_FROM_CAMERA);
-
+                isCamera=true;
                 Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
                 try {
@@ -110,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
         albumButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                isCamera=false;
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
                 startActivityForResult(intent,PHOTO_FROM_ALBUM);
@@ -196,6 +199,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else if (requestCode==PHOTO_FROM_CAMERA){
             //Bitmap photo = (Bitmap) data.getExtras().get("data");
+            ImageResizeUtils.resizeFile(tempFile,tempFile,1280,isCamera);
             BitmapFactory.Options options = new BitmapFactory.Options();
             Bitmap photo = BitmapFactory.decodeFile(tempFile.getAbsolutePath(), options);
 
