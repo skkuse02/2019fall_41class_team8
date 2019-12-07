@@ -24,6 +24,7 @@ import org.w3c.dom.Text;
 public class ImageList extends AppCompatActivity{
 
     public static String[] celebName = new String[4];
+    public static int[] accuracy = new int[4];
     private TextView textView;
     public ImageView imgv;
     @Override
@@ -32,6 +33,14 @@ public class ImageList extends AppCompatActivity{
         setContentView(R.layout.list_img);
 
         textView = (TextView)findViewById(R.id.text_similarity);
+
+        String result = getIntent().getStringExtra("result");
+        String[] arr1 = result.split("&");
+        for(int i=0;i<4;i++){
+            String[] arr2 = arr1[i].split("#");
+            celebName[i]=arr2[0]; accuracy[i] = Integer.parseInt(arr2[1]);
+        }
+
         textView.setText("99%");
 
         celebName[0] = "tzuyu"; celebName[1] = "mina"; celebName[2] = "sana"; celebName[3] = "momo";
