@@ -41,10 +41,7 @@ public class ImageList extends AppCompatActivity{
             celebName[i]=arr2[0]; accuracy[i] = Integer.parseInt(arr2[1]);
         }
 
-        textView.setText("99%");
-
-        celebName[0] = "tzuyu"; celebName[1] = "mina"; celebName[2] = "sana"; celebName[3] = "momo";
-
+        textView.setText("98%");
         //list
         final ViewPager viewPager = (ViewPager) findViewById(R.id.vp_main);
         viewPager.setAdapter(new MainPagerAdapter(getSupportFragmentManager()));
