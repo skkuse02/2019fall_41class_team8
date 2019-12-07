@@ -1,7 +1,9 @@
 package com.example.batb;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -64,9 +66,24 @@ public class MainActivity extends AppCompatActivity {
         helpButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(view.getContext(), HelpActivity.class);
-                startActivity(intent);
+                showDialog();
             }
         });
+    }
+
+    private void showDialog(){
+        AlertDialog.Builder builder=new AlertDialog.Builder(this);
+        builder.setTitle("HELP");
+        builder.setMessage("Give us your picture!");
+        builder.setPositiveButton("I know",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+        AlertDialog dialog=builder.create();
+        dialog.show();
+
     }
 }
