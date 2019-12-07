@@ -36,17 +36,16 @@ public class HorizontalPagerAdapter extends PagerAdapter {
     List<Utils.LibraryObject> LIBRARIES = new ArrayList<Utils.LibraryObject>();
 
     private void getLoopImg(int k){
-
-            for(int i = 0;i<99; i++){
-                tmpSign = ImageList.celebName[k]+"_"+(i+1);
-                int lid = mContext.getResources().getIdentifier(tmpSign, "drawable", mContext.getPackageName());
-                if ( lid != 0) {
-                    LIBRARIES.add(new Utils.LibraryObject(lid, ImageList.celebName[k]+i));
-                    break;
-                }
+        for(int i = 0;i<99; i++){
+            tmpSign = ImageList.celebName[k]+"_"+(i+1);
+            int lid = mContext.getResources().getIdentifier(tmpSign, "drawable", mContext.getPackageName());
+            if (lid != 0) {
+                LIBRARIES.add(new Utils.LibraryObject(lid, ImageList.celebName[k]+i));
             }
-
-
+            else {
+                break;
+            }
+        }
     }
 
     private int celebId;

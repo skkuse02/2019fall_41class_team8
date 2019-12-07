@@ -48,7 +48,7 @@ public class ImageList extends AppCompatActivity{
             celebName[i]=arr2[0]; accuracy[i] = Integer.parseInt(arr2[1]);
         }
 
-        textView.setText(accuracy[0]);
+        textView.setText(accuracy[0]+"%");
         //list
         viewPager = (ViewPager) findViewById(R.id.vp_main);
         mainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager());
