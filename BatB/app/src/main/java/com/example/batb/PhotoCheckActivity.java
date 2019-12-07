@@ -50,5 +50,15 @@ public class PhotoCheckActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        Button resultButton = findViewById(R.id.resultbutton);
+        resultButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),ResultActivity.class);
+                intent.putExtra("uri",photoUri);
+                startActivity(intent);
+            }
+        });
     }
 }

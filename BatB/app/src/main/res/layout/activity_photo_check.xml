@@ -45,6 +45,14 @@
             android:text="No"
             android:background="#efd3d3"/>
 
+        <Button
+            android:id="@+id/resultbutton"
+            android:layout_marginLeft="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Result"
+            android:background="#efd3d3"/>
+
     </LinearLayout>
 
 
