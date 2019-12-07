@@ -98,6 +98,7 @@ public class HorizontalPagerAdapter extends PagerAdapter {
         final View view;
         view = mLayoutInflater.inflate(R.layout.item, container, false);
         setupItem(view, LIBRARIES.get(position));
+
         container.addView(view);
         return view;
     }
