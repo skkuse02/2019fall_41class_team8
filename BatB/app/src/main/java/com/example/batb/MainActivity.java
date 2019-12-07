@@ -26,7 +26,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
 public class MainActivity extends AppCompatActivity {
@@ -66,8 +65,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                //Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                //startActivityForResult(intent,PHOTO_FROM_CAMERA);
                 Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
                 // Ensure that there's a camera activity to handle the intent
                 if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
@@ -78,9 +75,7 @@ public class MainActivity extends AppCompatActivity {
                     } catch (IOException ex) {}
                     // Continue only if the File was successfully created
                     if (photoFile != null) {
-                        photoURI = FileProvider.getUriForFile(v.getContext(),
-                                getPackageName(),
-                                photoFile);
+                        photoURI = FileProvider.getUriForFile(v.getContext(), getPackageName(), photoFile);
                         takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoURI);
                         startActivityForResult(takePictureIntent, PHOTO_FROM_CAMERA);
                     }
@@ -166,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
-        String imageFileName = "JPEG_" + timeStamp + "_";
+        String imageFileName = "BatB_" + timeStamp + "_";
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(
                 imageFileName,  /* prefix */
@@ -186,6 +181,7 @@ public class MainActivity extends AppCompatActivity {
         }
         if(requestCode==PHOTO_FROM_ALBUM){
             Uri uri = data.getData();
+
 
             Intent intent = new Intent(this, PhotoCheckActivity.class);
             intent.putExtra("uri",uri);
