@@ -46,7 +46,7 @@ public class RequestActivity extends AppCompatActivity {
     }
 
     void connectServer(){
-        String ipv4Address = "192.168.43.35";
+        String ipv4Address = "115.145.238.96";
         String portNumber = "8000";
 
         String postUrl= "http://"+ipv4Address+":"+portNumber+"/";

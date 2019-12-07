@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -20,8 +21,10 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.batb.utils.ImageResizeUtils;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
@@ -34,6 +37,8 @@ import java.util.*;
 import androidx.core.content.FileProvider;
 
 public class MainActivity extends AppCompatActivity {
+    private boolean isCamera=false;
+    private File tempFile;
     private int PHOTO_FROM_CAMERA=0, PHOTO_FROM_ALBUM=1;
     private Button cameraButton, albumButton, quitButton, helpButton, listtmpButton;
     @Override
@@ -69,8 +74,35 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(takePictureIntent, PHOTO_FROM_CAMERA);
+                //Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                //startActivityForResult(takePictureIntent, PHOTO_FROM_CAMERA);
+                isCamera=true;
+                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
+                try {
+                    tempFile = createImageFile();
+                } catch (IOException e) {
+                    Toast.makeText(getApplicationContext(), "이미지 처리 오류! 다시 시도해주세요.", Toast.LENGTH_SHORT).show();
+                    finish();
+                    e.printStackTrace();
+                }
+                if (tempFile != null) {
+
+                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+
+                        Uri photoUri = FileProvider.getUriForFile(getApplicationContext(),
+                                "com.example.batb.provider", tempFile);
+                        intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
+                        startActivityForResult(intent, PHOTO_FROM_CAMERA);
+
+                    } else {
+
+                        Uri photoUri = Uri.fromFile(tempFile);
+                        intent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
+                        startActivityForResult(intent, PHOTO_FROM_CAMERA);
+
+                    }
+                }
             }
         });
     }
@@ -80,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
         albumButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                isCamera=false;
                 Intent intent = new Intent(Intent.ACTION_PICK);
                 intent.setType(MediaStore.Images.Media.CONTENT_TYPE);
                 startActivityForResult(intent,PHOTO_FROM_ALBUM);
@@ -165,7 +198,10 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
         else if (requestCode==PHOTO_FROM_CAMERA){
-            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            //Bitmap photo = (Bitmap) data.getExtras().get("data");
+            ImageResizeUtils.resizeFile(tempFile,tempFile,1280,isCamera);
+            BitmapFactory.Options options = new BitmapFactory.Options();
+            Bitmap photo = BitmapFactory.decodeFile(tempFile.getAbsolutePath(), options);
 
             // CALL THIS METHOD TO GET THE URI FROM THE BITMAP
             Uri tempUri = getImageUri(getApplicationContext(), photo);
@@ -182,5 +218,23 @@ public class MainActivity extends AppCompatActivity {
         String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), OutImage, "Title", null);
         return Uri.parse(path);
     }
+
+    private File createImageFile() throws IOException {
+
+        // 이미지 파일 이름 ( blackJin_{시간}_ )
+        String timeStamp = new SimpleDateFormat("HHmmss").format(new Date());
+        String imageFileName = "BatB_" + timeStamp + "_";
+
+        // 이미지가 저장될 폴더 이름 ( blackJin )
+        File storageDir = new File(Environment.getExternalStorageDirectory() + "/BatB/");
+        if (!storageDir.exists()) storageDir.mkdirs();
+
+        // 빈 파일 생성
+        File image = File.createTempFile(imageFileName, ".jpg", storageDir);
+
+        return image;
+    }
+
+
 
 }
