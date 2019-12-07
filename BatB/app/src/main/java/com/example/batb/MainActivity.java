@@ -179,6 +179,7 @@ public class MainActivity extends AppCompatActivity {
         if(requestCode==PHOTO_FROM_ALBUM){
             Uri uri = data.getData();
 
+
             Intent intent = new Intent(this, PhotoCheckActivity.class);
             intent.putExtra("uri",uri);
             startActivity(intent);

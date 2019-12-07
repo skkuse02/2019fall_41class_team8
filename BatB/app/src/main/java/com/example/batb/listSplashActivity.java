@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.widget.ImageView;
+
+import com.bumptech.glide.Glide;
 
 import androidx.annotation.Nullable;
 
@@ -12,6 +15,9 @@ public class listSplashActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_list);
+
+        ImageView imageView = findViewById(R.id.loadingImage);
+        Glide.with(this).load(R.raw.loading).into(imageView);
         
         startLoading();
     }
