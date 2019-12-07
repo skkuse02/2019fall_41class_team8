@@ -15,8 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-
-        <activity android:name=".RequestActivity"></activity>
+        <activity android:name=".PostActivity"></activity>
+        <activity android:name=".RequestActivity" />
         <activity android:name=".ResultActivity" />
         <activity android:name=".PhotoCheckActivity" />
 

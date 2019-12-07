@@ -1,6 +1,7 @@
 package com.example.batb;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -80,8 +81,10 @@ public class ImageList extends AppCompatActivity{
 
     }
     public void clickMethod(View view){
-        Integer a = mainPagerAdapter.myFunc(celebId);
-        Toast toast = Toast.makeText(getApplicationContext(), a.toString(), Toast.LENGTH_SHORT);
-        toast.show();
+        Integer position = mainPagerAdapter.myFunc(celebId);
+        Intent intent = new Intent(getApplicationContext(),PostActivity.class);
+        intent.putExtra("celebId",celebId);
+        intent.putExtra("position",position);
+        startActivity(intent);
     }
 }
