@@ -31,7 +31,6 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
 public class MainActivity extends AppCompatActivity {
@@ -159,6 +158,7 @@ public class MainActivity extends AppCompatActivity {
         }
         if(requestCode==PHOTO_FROM_ALBUM){
             Uri uri = data.getData();
+
 
             Intent intent = new Intent(this, PhotoCheckActivity.class);
             intent.putExtra("uri",uri);
