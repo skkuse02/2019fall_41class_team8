@@ -48,7 +48,7 @@ public class ImageList extends AppCompatActivity{
             celebName[i]=arr2[0]; accuracy[i] = Integer.parseInt(arr2[1]);
         }
 
-        textView.setText("98%");
+        textView.setText(accuracy[0]);
         //list
         viewPager = (ViewPager) findViewById(R.id.vp_main);
         mainPagerAdapter = new MainPagerAdapter(getSupportFragmentManager());
@@ -68,6 +68,7 @@ public class ImageList extends AppCompatActivity{
 
             @Override
             public void onPageSelected(int position) {
+                textView.setText(accuracy[position]+"%");
                 celebId = position;
             }
 

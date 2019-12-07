@@ -21,6 +21,7 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
     private final static int COUNT = 4;
 
     //Map<String,Integer> ChoiceCeleb = new HashMap<String, Integer>();
+    /*
     public Integer ChoiceCeleb(String id){
         switch(id){
             case "chaeyong":    return 0;
@@ -35,6 +36,8 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
             default:            return 8;
         }
     }
+
+     */
 
     public MainPagerAdapter(final FragmentManager fm) {
         super(fm);

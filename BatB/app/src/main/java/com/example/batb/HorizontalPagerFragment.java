@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -16,7 +17,6 @@ import com.gigamole.infinitecycleviewpager.HorizontalInfiniteCycleViewPager;
 import java.util.ArrayList;
 
 public class HorizontalPagerFragment extends Fragment {
-    //public static ArrayList<Integer> celebid = new ArrayList<Integer>();
     private int celebid = 0;
     public HorizontalInfiniteCycleViewPager horizontalInfiniteCycleViewPager;
 
@@ -37,8 +37,6 @@ public class HorizontalPagerFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         horizontalInfiniteCycleViewPager = (HorizontalInfiniteCycleViewPager) view.findViewById(R.id.hicvp);
 
-        //int cid = celebid.get(0);
-        //celebid.remove(0);
         horizontalInfiniteCycleViewPager.setAdapter(new HorizontalPagerAdapter(getContext(), celebid));
 
     }

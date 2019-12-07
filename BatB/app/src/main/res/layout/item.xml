@@ -30,8 +30,8 @@
                 android:onClick="clickMethod"
                 tools:src="@drawable/ic_delivery" />
 
-
         </LinearLayout>
+
 
     </androidx.cardview.widget.CardView>
     
