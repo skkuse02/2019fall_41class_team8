@@ -15,8 +15,11 @@ import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -40,10 +43,12 @@ public class RequestActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_request);
 
+        ImageView imageView = findViewById(R.id.loadingImage);
+        Glide.with(this).load(R.raw.loading).into(imageView);
+
         Uri uri = getIntent().getParcelableExtra("uri");
 
         selectedImagePath = getPath(uri);
-        Toast.makeText(getApplicationContext(), selectedImagePath, Toast.LENGTH_LONG).show();
 
         connectServer();
     }
@@ -67,9 +72,6 @@ public class RequestActivity extends AppCompatActivity {
                 .addFormDataPart("image", "androidFlask.jpg", RequestBody.create(MediaType.parse("image/*jpg"), byteArray))
                 .build();
 
-        TextView responseText = findViewById(R.id.responseText);
-        responseText.setText("Please wait ...");
-
         postRequest(postUrl, postBodyImage);
     }
 
@@ -92,7 +94,7 @@ public class RequestActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        TextView responseText = findViewById(R.id.responseText);
+                        TextView responseText = findViewById(R.id.loadingTextview);
                         responseText.setText("Failed to Connect to Server");
                     }
                 });
@@ -104,10 +106,8 @@ public class RequestActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        TextView responseText = findViewById(R.id.responseText);
                         try {
                             result = response.body().string();
-                            responseText.setText(result);
                             success=true;
                         } catch (IOException e) {
                             e.printStackTrace();

@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private boolean isCamera=false;
     private File tempFile;
     private int PHOTO_FROM_CAMERA=0, PHOTO_FROM_ALBUM=1;
-    private Button cameraButton, albumButton, quitButton, helpButton, listtmpButton;
+    private Button cameraButton, albumButton, quitButton, helpButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,20 +52,8 @@ public class MainActivity extends AppCompatActivity {
         openAblum();
         quit();
         help();
-        listtmp();
     }
 
-    private void listtmp() {
-        listtmpButton = (Button) findViewById(R.id.listtmp);
-        listtmpButton.setOnClickListener(new OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ImageList.class);
-                startActivity(intent);
-            }
-        });
-    }
 
     private void openCamera() {
         cameraButton = (Button) findViewById(R.id.camera);
