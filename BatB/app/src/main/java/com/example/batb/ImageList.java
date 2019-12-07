@@ -1,9 +1,17 @@
 package com.example.batb;
 
+import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+import androidx.core.view.LayoutInflaterCompat;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.viewpager.widget.ViewPager;
@@ -17,13 +25,17 @@ public class ImageList extends AppCompatActivity{
 
     public static String[] celebName = new String[4];
     private TextView textView;
+    public ImageView imgv;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_img);
+
         textView = (TextView)findViewById(R.id.text_similarity);
-        celebName[0] = "tzuyu"; celebName[1] = "mina"; celebName[2] = "sana"; celebName[3] = "momo";
         textView.setText("99%");
+
+        celebName[0] = "tzuyu"; celebName[1] = "mina"; celebName[2] = "sana"; celebName[3] = "momo";
+
         //list
         final ViewPager viewPager = (ViewPager) findViewById(R.id.vp_main);
         viewPager.setAdapter(new MainPagerAdapter(getSupportFragmentManager()));
@@ -34,5 +46,8 @@ public class ImageList extends AppCompatActivity{
         navigationTabStrip.setViewPager(viewPager);
 
     }
-
+    public void clickMethod(View view){
+        Toast toast = Toast.makeText(getApplicationContext(),"다람쥐",Toast.LENGTH_SHORT);
+        toast.show();
+    }
 }
