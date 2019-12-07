@@ -17,14 +17,19 @@ public class PhotoCheckActivity extends AppCompatActivity {
     private ImageView imageView;
     private Button yesButton;
     private Button noButton;
+
+    private Uri photoUri;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_photo_check);
 
+        photoUri = getIntent().getParcelableExtra("uri");
+
         imageView = (ImageView)findViewById(R.id.imageView);
-        Uri uri = getIntent().getParcelableExtra("uri");
-        imageView.setImageURI(uri);
+
+        imageView.setImageURI(photoUri);
 
         yesButton = (Button)findViewById(R.id.yesButton);
         noButton = (Button)findViewById(R.id.nobutton);
@@ -33,6 +38,7 @@ public class PhotoCheckActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), RequestActivity.class);
+                intent.putExtra("uri", photoUri);
                 startActivity(intent);
             }
         });
