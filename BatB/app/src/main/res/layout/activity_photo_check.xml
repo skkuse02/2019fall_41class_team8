@@ -31,19 +31,19 @@
         android:layout_weight="1">
 
         <Button
-            android:id="@+id/yesButton"
+            android:id="@+id/nobutton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Yes"
+            android:text="취소"
             android:background="#efd3d3"
             android:layout_marginRight="20dp"/>
 
         <Button
-            android:id="@+id/nobutton"
+            android:id="@+id/yesButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="No"
-            android:background="#efd3d3"/>
+            android:text="확인"
+            android:background="#efd3d3" />
 
     </LinearLayout>
 
