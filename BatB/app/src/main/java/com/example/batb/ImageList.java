@@ -41,7 +41,7 @@ public class ImageList extends AppCompatActivity{
             celebName[i]=arr2[0]; accuracy[i] = Integer.parseInt(arr2[1]);
         }
 
-        textView.setText("98%");
+        textView.setText(accuracy[0]);
         //list
         final ViewPager viewPager = (ViewPager) findViewById(R.id.vp_main);
         viewPager.setAdapter(new MainPagerAdapter(getSupportFragmentManager()));
@@ -50,6 +50,23 @@ public class ImageList extends AppCompatActivity{
         final NavigationTabStrip navigationTabStrip = (NavigationTabStrip) findViewById(R.id.nts);
         navigationTabStrip.setTitles(celebName[0],celebName[1], celebName[2], celebName[3]);
         navigationTabStrip.setViewPager(viewPager);
+
+        navigationTabStrip.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                textView.setText(accuracy[position]+"%");
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
     }
     public void clickMethod(View view){

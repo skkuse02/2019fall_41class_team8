@@ -7,6 +7,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.viewpager.widget.PagerAdapter;
 
@@ -25,6 +27,7 @@ public class HorizontalPagerAdapter extends PagerAdapter {
     String tmpSign;
     private Context mContext;
     private LayoutInflater mLayoutInflater;
+    TextView textView;
     //String packageName = this.getPackageName();
 
     List<Utils.LibraryObject> LIBRARIES = new ArrayList<Utils.LibraryObject>();
@@ -34,44 +37,17 @@ public class HorizontalPagerAdapter extends PagerAdapter {
             for(int i = 0;i<99; i++){
                 tmpSign = ImageList.celebName[k]+"_"+(i+1);
                 int lid = mContext.getResources().getIdentifier(tmpSign, "drawable", mContext.getPackageName());
-                if ( lid != 0) LIBRARIES.add(new Utils.LibraryObject(lid, ImageList.celebName[k]+i));
+                if ( lid != 0) {
+                    LIBRARIES.add(new Utils.LibraryObject(lid, ImageList.celebName[k]+i));
+                    break;
+                }
             }
 
-/*
-        if(celebId == 0){
-            for(int i = 0;i<99; i++){
-                tmpSign = ImageList.celebName[0]+(i+1);
-                int lid = mContext.getResources().getIdentifier(tmpSign, "drawable", mContext.getPackageName());
-                //LIBRARIES[i] = new Utils.LibraryObject(lid, "IU"+i);
-                if ( lid != 0) LIBRARIES.add(new Utils.LibraryObject(lid, "IU"+i));
-            }
-        }else if(celebId == 1){
-            for(int i = 0;i<99; i++){
-                tmpSign = "v_"+(i+1);
-                int lid = mContext.getResources().getIdentifier(tmpSign, "drawable", mContext.getPackageName());
-                //LIBRARIES[i] = new Utils.LibraryObject(lid, "IU"+i);
-                if ( lid != 0) LIBRARIES.add(new Utils.LibraryObject(lid, "V"+i));
-            }
-        }else if(celebId == 2){
-            for(int i = 0;i<99; i++){
-                tmpSign = "queen_"+(i+1);
-                int lid = mContext.getResources().getIdentifier(tmpSign, "drawable", mContext.getPackageName());
-                //LIBRARIES[i] = new Utils.LibraryObject(lid, "IU"+i);
-                if ( lid != 0) LIBRARIES.add(new Utils.LibraryObject(lid, "QUEEN"+i));
-            }
-        }else if(celebId == 3){
-            for(int i = 0;i<99; i++){
-                tmpSign = "jeong_"+(i+1);
-                int lid = mContext.getResources().getIdentifier(tmpSign, "drawable", mContext.getPackageName());
-                //LIBRARIES[i] = new Utils.LibraryObject(lid, "IU"+i);
-                if ( lid != 0) LIBRARIES.add(new Utils.LibraryObject(lid, "JEONG"+i));
-            }
-        }
 
- */
     }
 
     private int celebId;
+    private int celebAcc;
 
     public HorizontalPagerAdapter(final Context context, final int celeb) {
         mContext = context;
@@ -102,6 +78,7 @@ public class HorizontalPagerAdapter extends PagerAdapter {
         container.addView(view);
         return view;
     }
+
 
     @Override
     public boolean isViewFromObject(final View view, final Object object) {

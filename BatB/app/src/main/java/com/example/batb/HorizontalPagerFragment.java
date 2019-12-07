@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 
 public class HorizontalPagerFragment extends Fragment {
     public static ArrayList<Integer> celebid = new ArrayList<Integer>();
+    TextView textView;
     @Nullable
     @Override
     public View onCreateView(final LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable final Bundle savedInstanceState) {

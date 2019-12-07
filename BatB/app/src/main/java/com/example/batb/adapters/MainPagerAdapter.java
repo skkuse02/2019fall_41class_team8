@@ -15,6 +15,7 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
     private final static int COUNT = 4;
 
     //Map<String,Integer> ChoiceCeleb = new HashMap<String, Integer>();
+    /*
     public Integer ChoiceCeleb(String id){
         switch(id){
             case "chaeyong":    return 0;
@@ -30,6 +31,8 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
         }
     }
 
+     */
+
     public MainPagerAdapter(final FragmentManager fm) {
         super(fm);
 
@@ -38,11 +41,9 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(final int position) {
         if(position == 0){
-            //HorizontalPagerFragment.getID(ChoiceCeleb(ImageList.celebName[0]));
             HorizontalPagerFragment.getID(0);
             return new HorizontalPagerFragment();
         }else if( position == 1){
-            //HorizontalPagerFragment.getID(ChoiceCeleb(ImageList.celebName[1]));
             HorizontalPagerFragment.getID(1);
             return new HorizontalPagerFragment();
         }else if( position == 2){
