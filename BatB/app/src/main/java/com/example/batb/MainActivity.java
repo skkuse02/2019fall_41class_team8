@@ -33,7 +33,6 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
     private int PHOTO_FROM_CAMERA=0, PHOTO_FROM_ALBUM=1;
     private Button cameraButton, albumButton, quitButton, helpButton;
-    Button button;
     Uri photoURI;
 
     @Override
@@ -97,14 +96,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), HelpActivity.class);
                 startActivity(intent);
-            }
-        });
-
-        button = findViewById(R.id.button2);
-        button.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(view.getContext(), ResultActivity.class));
             }
         });
     }
