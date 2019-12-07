@@ -120,6 +120,7 @@ public class RequestActivity extends AppCompatActivity {
         document_id = document_id.substring(document_id.lastIndexOf(":")+1);
         cursor.close();
 
+        Log.d("!@#!@#", "ASDF");
         cursor = getContentResolver().query(
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
                 null, MediaStore.Images.Media._ID + " = ? ", new String[]{document_id}, null);
