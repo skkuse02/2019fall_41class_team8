@@ -74,7 +74,7 @@ public class MainPagerAdapter extends FragmentStatePagerAdapter {
         return super.getItemPosition(object);
     }
 
-    public int myFunc(int celebId) {
-        return hpFragment.get(celebId).horizontalInfiniteCycleViewPager.getRealItem();
+    public String getPosition(int celebId) {
+        return String.valueOf(hpFragment.get(celebId).horizontalInfiniteCycleViewPager.getRealItem());
     }
 }

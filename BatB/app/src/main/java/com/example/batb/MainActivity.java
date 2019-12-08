@@ -194,7 +194,7 @@ public class MainActivity extends AppCompatActivity {
             Uri tempUri = getImageUri(getApplicationContext(), photo);
 
             Intent intent = new Intent(this, PhotoCheckActivity.class);
-            intent.putExtra("uri",tempUri);
+            intent.putExtra("uri", tempUri);
             startActivity(intent);
         }
     }
@@ -221,7 +221,5 @@ public class MainActivity extends AppCompatActivity {
 
         return image;
     }
-
-
 
 }

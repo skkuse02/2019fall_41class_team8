@@ -2,6 +2,7 @@ package com.example.batb;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -33,12 +34,16 @@ public class ImageList extends AppCompatActivity{
     public static int[] accuracy = new int[4];
     private TextView textView;
 
+    private Uri photoUri;
+
     private int celebId = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_img);
+
+        photoUri = getIntent().getParcelableExtra("uri");
 
         textView = (TextView)findViewById(R.id.text_similarity);
 
@@ -81,10 +86,11 @@ public class ImageList extends AppCompatActivity{
 
     }
     public void clickMethod(View view){
-        Integer position = mainPagerAdapter.myFunc(celebId);
-        Intent intent = new Intent(getApplicationContext(),PostActivity.class);
-        intent.putExtra("celebId",celebId);
-        intent.putExtra("position",position);
+        String position = mainPagerAdapter.getPosition(celebId);
+        Intent intent = new Intent(getApplicationContext(),MakeupActivity.class);
+        intent.putExtra("celebName",celebName[celebId]);
+        intent.putExtra("celebPosition",position);
+        intent.putExtra("uri", photoUri);
         startActivity(intent);
     }
 }
