@@ -2,22 +2,16 @@ package com.example.batb;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ContentUris;
-import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -33,7 +27,7 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class RequestActivity extends AppCompatActivity {
+public class FindCelebritiesActivity extends AppCompatActivity {
     private String selectedImagePath;
     private String result;
     private boolean success = false;
@@ -41,7 +35,7 @@ public class RequestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_request);
+        setContentView(R.layout.activity_find_celebrities);
 
         ImageView imageView = findViewById(R.id.loadingImage);
         Glide.with(this).load(R.raw.loading).into(imageView);

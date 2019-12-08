@@ -16,7 +16,7 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
         <activity android:name=".MakeupActivity"></activity>
-        <activity android:name=".RequestActivity" />
+        <activity android:name=".FindCelebritiesActivity" />
         <activity android:name=".ResultActivity" />
         <activity android:name=".PhotoCheckActivity" />
 
