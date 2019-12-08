@@ -36,7 +36,7 @@ import okhttp3.Response;
 public class RequestActivity extends AppCompatActivity {
     private String selectedImagePath;
     private String result;
-    private boolean success=false;
+    private boolean success = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +54,10 @@ public class RequestActivity extends AppCompatActivity {
     }
 
     void connectServer(){
-        String ipv4Address = "115.145.238.96";
+        String ipv4Address = "192.168.0.30";
         String portNumber = "8000";
 
-        String postUrl= "http://"+ipv4Address+":"+portNumber+"/";
+        String postUrl= "http://" + ipv4Address + ":" + portNumber + "/similar";
 
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         BitmapFactory.Options options = new BitmapFactory.Options();
