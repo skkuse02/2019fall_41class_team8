@@ -115,6 +115,7 @@ public class FindCelebritiesActivity extends AppCompatActivity {
                 intent.putExtra("result", result);
                 intent.putExtra("uri", photoUri);
                 startActivity(intent);
+                finish();
             }
         });
     }

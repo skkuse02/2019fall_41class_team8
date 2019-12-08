@@ -78,6 +78,7 @@ public class ResultActivity extends AppCompatActivity {
             public void onClick(View view) {
                 try {
                     createImageFile();
+                    finish();
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

@@ -36,6 +36,7 @@ public class PhotoCheckActivity extends AppCompatActivity {
                 Intent intent = new Intent(view.getContext(), FindCelebritiesActivity.class);
                 intent.putExtra("uri", photoUri);
                 startActivity(intent);
+                finish();
             }
         });
 

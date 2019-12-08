@@ -105,6 +105,7 @@ public class MakeupActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
                 intent.putExtra("uri", photoUri);
                 startActivity(intent);
+                finish();
             }
         });
     }
