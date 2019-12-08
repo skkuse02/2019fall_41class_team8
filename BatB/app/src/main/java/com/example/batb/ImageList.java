@@ -82,7 +82,7 @@ public class ImageList extends AppCompatActivity{
     }
     public void clickMethod(View view){
         String position = mainPagerAdapter.getPosition(celebId);
-        Intent intent = new Intent(getApplicationContext(),PostActivity.class);
+        Intent intent = new Intent(getApplicationContext(),MakeupActivity.class);
         intent.putExtra("celebName",celebName[celebId]);
         intent.putExtra("celebPosition",position);
         startActivity(intent);

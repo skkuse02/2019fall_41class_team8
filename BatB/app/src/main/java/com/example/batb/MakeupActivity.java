@@ -19,14 +19,14 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class PostActivity extends AppCompatActivity {
+public class MakeupActivity extends AppCompatActivity {
     private String celebName;
     private String celebPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post);
+        setContentView(R.layout.activity_makeup);
 
         celebName = getIntent().getStringExtra("celebName");
         celebPosition = getIntent().getStringExtra("celebPosition");
