@@ -2,13 +2,22 @@ package com.example.batb;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Objects;
 
 import okhttp3.Call;
@@ -22,16 +31,25 @@ import okhttp3.Response;
 public class MakeupActivity extends AppCompatActivity {
     private String celebName;
     private String celebPosition;
+    private Uri photoUri;
+
+    private ImageView imageView;
+    private Context context;
+
+    private boolean success = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_makeup);
 
+        context = getApplicationContext();
+
         celebName = getIntent().getStringExtra("celebName");
         celebPosition = getIntent().getStringExtra("celebPosition");
+        photoUri = getIntent().getParcelableExtra("uri");
 
-        ImageView imageView = findViewById(R.id.loadingImage2);
+        imageView = findViewById(R.id.loadingImage2);
         Glide.with(this).load(R.raw.loading).into(imageView);
 
         connectServer();
@@ -40,7 +58,6 @@ public class MakeupActivity extends AppCompatActivity {
     void connectServer(){
         String ipv4Address = "192.168.0.30";
         String portNumber = "8000";
-
         String getUrl = "http://" + ipv4Address + ":" + portNumber + "/makeup/" + celebName + "&" + celebPosition;
 
         postRequest(getUrl);
@@ -75,14 +92,19 @@ public class MakeupActivity extends AppCompatActivity {
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        TextView responseText = findViewById(R.id.loadingTextview2);
                         try {
-                            responseText.setText(response.body().string());
+                            response.body().string();
+                            success = true;
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                     }
                 });
+
+                while (!success);
+                Intent intent = new Intent(getApplicationContext(), ResultActivity.class);
+                intent.putExtra("uri", photoUri);
+                startActivity(intent);
             }
         });
     }

@@ -30,6 +30,7 @@ import okhttp3.Response;
 public class FindCelebritiesActivity extends AppCompatActivity {
     private String selectedImagePath;
     private String result;
+    private Uri photoUri;
     private boolean success = false;
 
     @Override
@@ -40,9 +41,9 @@ public class FindCelebritiesActivity extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.loadingImage);
         Glide.with(this).load(R.raw.loading).into(imageView);
 
-        Uri uri = getIntent().getParcelableExtra("uri");
+        photoUri = getIntent().getParcelableExtra("uri");
 
-        selectedImagePath = getPath(uri);
+        selectedImagePath = getPath(photoUri);
 
         connectServer();
     }
@@ -111,7 +112,8 @@ public class FindCelebritiesActivity extends AppCompatActivity {
 
                 while(!success);
                 Intent intent = new Intent(getApplicationContext(), ImageList.class);
-                intent.putExtra("result",result);
+                intent.putExtra("result", result);
+                intent.putExtra("uri", photoUri);
                 startActivity(intent);
             }
         });
