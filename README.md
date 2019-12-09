@@ -7,6 +7,8 @@ An application for people who want to know the proper makeup.
 ## Developer
 > - lojpark
 > - jyooj08
+> - CHOJUNEHEE
+> - Gomader
 > - ricardo950621
 
 ## Used open sources
